@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090"
+    environment:
+      - PORT=8090
+      - INNGEST_DEV_ROOT_URL=http://inngest:8288
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+    depends_on:
+      - inngest
+
+  inngest:
+    image: inngest/inngest:latest
+    ports:
+      - "8288:8288"
+    command: "dev --host 0.0.0.0 --port 8288 --sdk-url http://app:8090/inngest"

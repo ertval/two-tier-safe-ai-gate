@@ -1,0 +1,14 @@
+# Binaries
+two-tier-safe-ai-gate
+
+# Environments and Secrets
+.env
+.env.local
+
+# Dependency directories
+vendor/
+
+# OS/Editor specific
+.DS_Store
+.vscode/
+.idea/

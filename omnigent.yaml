@@ -1,0 +1,38 @@
+harness:
+  name: "two-tier-safe-ai-gate-harness"
+  description: "Governance harness for evaluating agentic transaction proposals"
+
+policies:
+  # Stateful security and safety boundaries
+  contextual:
+    - name: "cost-safety-limit"
+      description: "Abort session if cumulative LLM cost exceeds $100.00"
+      rules:
+        - key: "cumulative_cost"
+          operator: "less_than"
+          value: 100.00
+          action: "ABORT"
+
+    - name: "hitl-approval-budget"
+      description: "Mandatory human review for any transaction tool call proposing > $500.00"
+      rules:
+        - key: "tool_calls.arguments.amount"
+          operator: "greater_than"
+          value: 500.00
+          action: "ASK" # Intercepts execution and prompts human-in-the-loop validation
+
+tools:
+  # Expose tools from the Go MCP server to the Omnigent agent runtime
+  mcp_servers:
+    - name: "gate-verification-server"
+      type: "stdio"
+      command: "./two-tier-safe-ai-gate"
+      args: ["--mcp"]
+
+sandboxing:
+  # OS-level sandboxing constraints via Omnibox
+  type: "omnibox"
+  allow_network: true
+  allow_filesystem_read:
+    - "/home/ertval/code/project-modules/two-tier-safe-ai-gate"
+  allow_filesystem_write: []
