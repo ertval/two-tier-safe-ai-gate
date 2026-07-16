@@ -96,3 +96,15 @@ This project is ready to be co-driven by **Omnigent** using the bundled `omnigen
 - Exposes our Go verification rules as an MCP tool registry to any Omnigent agent.
 - Defines stateful cost policies (max `$100` budget per session).
 - Sandboxes filesytem access.
+
+---
+
+## Related
+
+- [**ertval.github.io**](https://ertval.github.io) — Portfolio & CV
+- [**two-tier-safe-ai-gate**](https://github.com/ertval/two-tier-safe-ai-gate) — Safe AI execution model (Go + Inngest + Omnigent)
+- [**keel-multi-agent-pipeline**](https://github.com/ertval/keel-multi-agent-pipeline) — Multi-agent maritime intelligence (Python + LangGraph)
+- [**social-network**](https://github.com/ertval/social-network) — Go vertical-slices full-stack monolith (Next.js)
+- [**make-your-game**](https://github.com/ertval/make-your-game) — Pure JS ECS game engine
+- [**real-time-forum**](https://github.com/ertval/real-time-forum) — Go + Vanilla JS real-time WebSocket SPA
+- [**forum**](https://github.com/ertval/forum) — Go hexagonal architecture monolith (zero-dependency)
